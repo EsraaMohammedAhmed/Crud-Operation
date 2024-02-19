@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crud & Tailwind CSS Project</title>
+        
+        <link rel="stylesheet" href="./style/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+     <body class="bg-gray-900  max-h-screen ">
+        <h1 class="text-4xl font-bold text-center mt-10  text-white ">Welcome to Crud & Tailwind CSS Project</h1>
+        <div class="mt-10 flex justify-center items-center flex-col">
+            <div class="flex gap-5 ">
+                <div class=" flex  flex-col w-96">
+                    <label for="productName" class="text-white font-bold">ProductName:</label>
+                    <input
+                        type="text"
+                        class="mt-2 text-center font-bold  border border-slate-300   px-2 py-2  rounded  bg-white  text-black outline-none"
+                        id="productName"
+                        name=""
+                    >
+                    <small class="mt-1 text-white">ProductName Must Be charset Only</small>
+                </div>
+                <div class=" w-96 flex flex-col ">
+                    <label for="productPrice" class=" font-bold text-white">ProductPrice:</label>
+                    <input
+                        type="number"
+                        class=" px-2 py-2 bg-white border border-slate-300 mt-2 text-center  rounded bg-white  text-black outline-none"
+                        id="productPrice"
+                        name=""
+                    >
+                    <small class="mt-1 text-white">ProductPrice Must Be charset Only</small>
+                </div>
+            </div>
+            <div class="flex gap-5 mt-5">
+                <div class=" flex  flex-col w-96">
+                    <label for="productGategory" class="text-white font-bold">ProductGategory:</label>
+                    <input
+                        type="text"
+                        class="mt-2 text-center font-bold  border border-slate-300   px-2 py-2  rounded  bg-white  text-black outline-none"
+                        id="productGategory"
+                        name=""
+                    >
+                    <small class="mt-1 text-white">productGategory Must Be charset Only</small>
+                </div>
+                <div class=" w-96 flex flex-col ">
+                    <label for="productDescription" class="font-bold text-white">ProductDescraption:</label>
+                    <input
+                        type="text"
+                        class=" px-2 py-2 bg-white border border-slate-300 mt-2 text-center  rounded bg-white  text-black outline-none"
+                        id="productDescription"
+                        name=""
+                    >
+                    <small class="mt-1 text-white">ProductDescraption Must Be charset Only</small>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-evenly my-10">
+            <button
+                id="addButton"
+                onclick="addProduct()"
+                type="submit"
+                class="border-gray-400 hover:bg-transparent   border-gray-700 text-gray-400 font-bold hover:text-white border px-4 py-2 rounded"
+            >AddProduct</button>
+            <div></div>
+            <div></div>
+          
+        </div>
+        <div class="  flex justify-around mb-5 ">
+            <div></div>
+            <div></div>
+            <div class=" ps-3  ">
+                <!-- <svg
+                    class=" w-4 h-4 text-gray-500 text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                >
+                    <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                </svg> -->
+            </div>
+            <div>
+                <input
+                    type="text"
+                    id="searchInput"
+                 class=" relative pt-2 ps-10 text-sm 
+             bg-gray-800 text-gray-400
+            w-96 rounded
+           outline-none flex-center flex 
+              placeholder-gray-400 p-2 font-semibold"
+                    placeholder="Search for items"
+                > 
+            </div>
+        </div>
+        <table class=" text-sm  text-center text-gray-400  w-full border-2 border-gray-800 relative overflow-x-auto shadow-md sm:rounded-lg">
+            <thead>
+                <tr class=" border-b border-gray-800">
+                    <th class="">ID</th>
+                    <th class="">Name</th>
+                    <th class="">Price</th>
+                    <th class="">Category</th>
+                    <th class="">Description</th>
+                    <th class="">Update</th>
+                    <th class="">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+       
+
+
+
+
+            <div id="updateModal" class="hidden fixed top-0 bottom-0 w-full h-full bg-gray-100 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-10 rounded-lg">
+              <h2 class="text-2xl font-bold mb-5">Update Product</h2>
+              <div class="flex flex-col mb-3">
+                <label for="updateProductName">Product Name</label>
+                <input type="text" id="updateProductName" class="p-2 border rounded" />
+              </div>
+              <div class="flex flex-col mb-3">
+                <label for="updateProductPrice">Product Price</label>
+                <input type="number" id="updateProductPrice" class="p-2 border rounded" />
+              </div>
+              <div class="flex flex-col mb-3">
+                <label for="updateProductCategory">Product Category</label>
+                <input type="text" id="updateProductCategory" class="p-2 border rounded" />
+              </div>
+              <div class="flex flex-col mb-3">
+                <label for="updateProductDescription">Product Description</label>
+                <input type="text" id="updateProductDescription" class="p-2 border rounded" />
+              </div>
+              <button id="updateButton" onclick="updateProductOnSubmit()" class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
+              <button onclick="closeUpdateModal()" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Cancel</button>
+            </div>
+          </div>
+
+
+<body>
+
+
+<script src="main/script.js"></script>
+    </body>
+</html>
